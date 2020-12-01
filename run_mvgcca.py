@@ -151,7 +151,7 @@ if __name__ == '__main__':
     parser.add_argument('--num_of_run', type = int, default = 1, help='Number of times the algorithm is runned.')
     parser.add_argument('--evaluation', type = str2bool, default = True, help='True or False. Decide whether or not to evaluate latent space (evalutation function depend on the task selected). If option --num_of_run > 1 average evaluation of these run is returned.')
     args = parser.parse_args()
-    device = '/cpu:0' if args.device == '-1' or args.device == '-1' else '/gpu:'+args.device
+    device = '/cpu:0' if args.device == '-1' or args.device == '' else '/gpu:'+args.device
     parameters = {}
     parameters["task"] = [args.task]
     parameters["gamma"] = [1] if args.use_graph_decoder else [0]
@@ -205,10 +205,10 @@ if __name__ == '__main__':
                         if args.task == "uci7":
                             Z_tab = get_mvgcca_latent_space(X, W, model_trained)
                             Z_common = Z_tab[0]
-                            index = process_data.get_uci_index(nb_clusters=7)
+                            labels = process_data.get_uci_labels(nb_clusters=7)
                             print("Parameters: " +str(parameters_))
                             display_bool = run_id == args.num_of_run -1
-                            result_tab.append(process_evaluation.evaluate_clustering(Z_common,index=index,nb_clusters = 7, display_graph_with_tsne = display_bool, display_score = False, write_score = True, write_path = parameters_["evaluation_path"]))
+                            result_tab.append(process_evaluation.evaluate_clustering(Z_common,labels=labels,nb_clusters = 7, display_graph_with_tsne = display_bool, display_score = False, write_score = True, write_path = parameters_["evaluation_path"]))
                             if run_id == args.num_of_run - 1 :
                                 print("Parameters: " +str(parameters_))
                                 print("Average results")
@@ -219,10 +219,10 @@ if __name__ == '__main__':
                         elif args.task == "uci10":
                             Z_tab = get_mvgcca_latent_space(X, W, model_trained)
                             Z_common = Z_tab[0]
-                            index = process_data.get_uci_index(nb_clusters=10)
+                            labels = process_data.get_uci_labels(nb_clusters=10)
                             print("Parameters: " +str(parameters_))
                             display_bool = run_id == args.num_of_run -1
-                            result_tab.append(process_evaluation.evaluate_clustering(Z_common,index=index,nb_clusters = 10, display_graph_with_tsne = display_bool, display_score = False, write_score = True, write_path = parameters_["evaluation_path"]))
+                            result_tab.append(process_evaluation.evaluate_clustering(Z_common,labels=labels,nb_clusters = 10, display_graph_with_tsne = display_bool, display_score = False, write_score = True, write_path = parameters_["evaluation_path"]))
                             if run_id == args.num_of_run - 1 :
                                 print("Parameters: " +str(parameters_))
                                 print("Average results")
