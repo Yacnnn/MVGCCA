@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 import scipy.io as sio 
 import os
 from tqdm import tqdm
@@ -54,9 +53,9 @@ def load_uci(nb_clusters = 7):
     Wuci = data["W"]
     return Xuci, Wuci
 
-def get_uci_index(nb_clusters = 7):
-    index = []
+def get_uci_labels(nb_clusters = 7):
+    labels = []
     for k in range(nb_clusters):
         for l in range(200):
-            index.append(k)
-    return index
+            labels.append(k)
+    return labels
