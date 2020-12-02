@@ -67,7 +67,9 @@ def save_mvgcca_latent_space(X, W, model, path, epochs):
         dictionary = dict(zip(key, U))
         sio.savemat(path+"latent_space_"+str(epochs+1)+'epochs.mat',dictionary)  
              
-def train(X, W, parameters):
+def train(data, parameters):
+    X = data["X"]
+    W = data["W"]
     # Model parameters
     latent_dim = parameters["latent_dim"]
     gamma  = parameters["gamma"] 
@@ -178,8 +180,8 @@ if __name__ == '__main__':
         parameters["decoder_scalar_std"] = [True, False]
     if args.task in  process_data.available_tasks():
         if not args.task == "tfr" and not args.task == "NCI1" and not args.task == "PROTEINS_full" and not args.task == "PROTEINS" and not args.task == "ENZYMES":
-            X, W = process_data.load_dataset(args.task)
-            X, W = process_data.preprocess_data(X, W)
+            data = process_data.load_dataset(args.task)
+            data = process_data.preprocess_data(data)
         with tf.device(device): 
             for parameters_, parameters_id in zip(list(ParameterGrid(parameters)),range(len(list(ParameterGrid(parameters))))):
                 success = True
@@ -189,7 +191,7 @@ if __name__ == '__main__':
                     while restart < MAX_RESTART and success == True:
                         restart += 1
                         try :
-                            model_trained = train(X, W, parameters_)
+                            model_trained = train(data, parameters_)
                         except Exception as e:
                             print(e.__doc__)
                             try:
@@ -203,6 +205,8 @@ if __name__ == '__main__':
                     result_tab = []
                     if args.evaluation :
                         if args.task == "uci7":
+                            X = data["X"]
+                            W = data["W"]
                             Z_tab = get_mvgcca_latent_space(X, W, model_trained)
                             Z_common = Z_tab[0]
                             labels = process_data.get_uci_labels(nb_clusters=7)
@@ -217,6 +221,8 @@ if __name__ == '__main__':
                                 print("Spectral Clustering Score on UCI7: "+str(average_result[1]))
                                 print("Svm-rbf Accuracy on UCI7: "+str(average_result[2]))    
                         elif args.task == "uci10":
+                            X = data["X"]
+                            W = data["W"]
                             Z_tab = get_mvgcca_latent_space(X, W, model_trained)
                             Z_common = Z_tab[0]
                             labels = process_data.get_uci_labels(nb_clusters=10)
