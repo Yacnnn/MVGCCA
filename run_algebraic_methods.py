@@ -39,9 +39,6 @@ def evaluate_clustering_gmcca(data, latent_dim = 3, gamma_list = [0], nb_run = 1
         Stmcca_tab.append(Stmcca)
     process_evaluation.evaluate_clustering_cross_validation(Stmcca_tab, labels, nb_clusters = nb_clusters, nb_run = nb_run)
 
-def evaluate_friendrecommandation_gpca(data, latent_dim = 3, beta_list = [0], nb_run = 1):
-
-
 def evaluate_uci(method):
     if method == "pca":
         beta_list = [0]
