@@ -54,7 +54,7 @@ def evaluate_uci(method):
         evaluate_clustering_gmcca(data, latent_dim = 3, gamma_list = gamma_list, nb_run = 100)
 
 def evaluate_tfr(method):
-    print("TO DO")
+    print("TO DO.")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
