@@ -28,7 +28,7 @@ def evaluate_clustering_gpca(data, latent_dim = 3, beta_list = [0], nb_run = 1):
     process_evaluation.evaluate_clustering_cross_validation(Xpca_tab, labels, nb_clusters = nb_clusters, nb_run = nb_run)
 
 def evaluate_clustering_gmcca(data, latent_dim = 3, gamma_list = [0], nb_run = 1):
-    X = np.concatenate(data["X"],axis = 1)
+    X = data["X"]#np.concatenate(data["X"],axis = 1)
     W = data["W"]
     labels = data["labels"]
     nb_clusters = data["nb_clusters"]
