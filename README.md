@@ -164,7 +164,7 @@ It will create a folder (for example) April_23_2021_01h05m53s in folder "results
 
 *Evaluate runs :*
 ``` 
-python3 run_mvgcca_grid_search_evaluation.py --task uci7 '--date' April_23_2021_01h05m53s
+python3 run_mvgcca_grid_search_evaluation.py --task uci7 --date April_23_2021_01h05m53s
 ```
 This command will evaluate the gridsearch performed on mnist2views at April_23_2021_01h05m53s and print it.
 (SVM-Rbf accuracy)
