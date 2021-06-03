@@ -14,6 +14,8 @@
 ### Example 
 ![multiview_dataset](https://user-images.githubusercontent.com/73817884/120652163-c9c5b480-c47f-11eb-8513-82213542c9e1.png)
 ### Multiviews Dataset with missing views
+![multiview_dataset_corruptedv2](https://user-images.githubusercontent.com/73817884/120651931-9551f880-c47f-11eb-8f5d-f277b995d716.png)
+
 ## Datasets
 
 All the datasets are decribed in details on article (~ will come)
@@ -36,7 +38,6 @@ Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robus
 
 - uci7/uci10 : Evaluate clustering and classification on uci7/uci10 latent space.`
 
-![multiview_dataset_corruptedv2](https://user-images.githubusercontent.com/73817884/120651931-9551f880-c47f-11eb-8f5d-f277b995d716.png)
 
 - uci7robustinf/uci10robustinf : We split the dataset in train and test set. We eventually remove some views is test set (same views removed for all instances). In the train set, we add the label of each instances as the 7th views. We train the model on this train set. Then we infer the labels (the 7th views) of the test sets.
 - uci7robustclassif/uci10robustclassif : We split the dataset in train and test set. We train the model on this train set. We then train a classifier on train latent space and evaluate it on test latent space.
