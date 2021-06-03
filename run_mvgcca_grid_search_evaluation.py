@@ -186,7 +186,7 @@ def evalute_classif_cross_validation_mnist2views(embeddings_list,labels,nb_clust
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--task', default='mnist700f1', help='Task to execute. Only %s are currently available.'%str(available_tasks()))
+    parser.add_argument('--task', default='mnist2views', help='Task to execute. Only %s are currently available.'%str(available_tasks()))
     parser.add_argument('--date', default='April_23_2021_01h05m53s', help='[MONTH]_[DAY]_[YEAR]_[HOUR]h[MINUTES]m[SECONDES]s')
     args = parser.parse_args()
     if args.task in available_tasks():
