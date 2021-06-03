@@ -132,8 +132,8 @@ In previous experiments, the number of run corresponds to the number of times we
 ``` 
 python3 run_mvgcca.py --task tfr --latent_dim 5 ----num_of_run 100
 ```
-The first time you launch this command, for each run $i$, if the file 'datasets/tfr/twitter$i$.mat" exists we load it. Otherwise we sample 2506 users from database and create the associated weighted graph as specified in the paper. Then we save it in 'datasets/tfr/twitter$i$.mat";
-It will alse create a folder (for exmaple)  April_23_2021_01h05m53s in folder 'results/tfr/' with all the run information.
+The first time you launch this command, for each run $i$, if the file "datasets/tfr/twitter$i$.mat" exists we load it. Otherwise we sample 2506 users from database and create the associated weighted graph as specified in the paper. Then we save it in "datasets/tfr/twitter$i$.mat".
+However, this command will also create a folder (for example)  April_23_2021_01h05m53s in folder 'results/tfr/' with all the run information.
 
 *Evaluate the grid search :*
 ``` 
