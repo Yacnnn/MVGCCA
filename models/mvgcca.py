@@ -7,7 +7,6 @@ from layers.cdgn_krylov import Cdgn_Krylov
 
 
 class Mvgcca(tf.keras.Model):
-    
     def __init__(self, 
                  latent_dim = 3,
                  gamma = 1,
@@ -19,7 +18,8 @@ class Mvgcca(tf.keras.Model):
                  encoder_use_common_hidden_layer = True,
                  decoder_scalar_std = True,
                  use_gcn = False,
-                 l2_reg = 0
+                 l2_reg = 0,
+                 views_dropout_max = 0
                 ):
         super(Mvgcca, self).__init__() 
         #Parameters
@@ -33,7 +33,9 @@ class Mvgcca(tf.keras.Model):
         self.encoder_use_common_hidden_layer = encoder_use_common_hidden_layer
         self.decoder_scalar_std = decoder_scalar_std
         self.use_gcn = use_gcn
-        self.l2_reg = l2_reg
+        self.l2_reg = l2_reg,
+        self.views_dropout_max = views_dropout_max
+        self.first_run = True
         
     def build(self,shape):
         self.num_of_views = len(shape)
@@ -74,7 +76,8 @@ class Mvgcca(tf.keras.Model):
                     )  for s in range(self.num_of_views)]
 
     def call(self,views,indice,w):
-        mean, var, logvar = self.average_encoders(views, w, views_id = None)
+        views_id = self.views_id_to_keep()
+        mean, var, logvar = self.average_encoders(views, w, views_id = views_id)
         #Kullback-Leibler 
         kl_qp =  self.latent_dim + tf.reduce_sum( logvar, axis = 1 )  -  tf.reduce_sum( var, axis = 1 ) - tf.reduce_sum( mean ** 2, axis = 1 )
         kl_qp = - 0.5 * kl_qp
@@ -99,8 +102,9 @@ class Mvgcca(tf.keras.Model):
         ce_qp = ce_qp_sum / self.num_of_z_sampled
         return tf.reduce_mean( kl_qp  , axis = 0 ), - ce_qp
     
-    def average_encoders(self, views, w, views_id = None):
-        if views_id == None :
+    # Encodes views from a limited numbers of views (the same for all instances) or from all views
+    def average_encoders(self, views, w, views_id = []):
+        if views_id == [] :
             views_id = np.arange(self.num_of_views)
         if "krylov" in self.encoder_nn_type:
             packs = [self.cdgn_encoders[s]([ views[s:s+1] , [w] ]) for s in views_id]
@@ -121,13 +125,58 @@ class Mvgcca(tf.keras.Model):
         logvar = tf.math.log(var)
         return mean, var, logvar
 
-    def get_reconstruct_views_from_someviews(self, views, w, views_id = None):
+    # Select views to keep when views dropout is activate
+    def views_id_to_keep(self):
+        if self.first_run == True:
+            self.first_run = False
+            return list(np.arange(self.num_of_views))
+        if self.views_dropout_max > 0:
+            views_id = np.arange(self.num_of_views)
+            np.random.shuffle(views_id)
+            return views_id[:np.random.randint(max(self.num_of_views - self.views_dropout_max,1),self.num_of_views+1 )]
+            # return views_id[:np.random.randint(1,self.num_of_views+1 )]
+        return list(np.arange(self.num_of_views))
+
+    # Reconstruct views from a subset of views (the same for all instances)                  
+    def get_reconstruct_views_from_someviews(self, views, w, views_id = []):
         mean, var, logvar = self.average_encoders(views, w, views_id = views_id)
         z_sample = mean + tf.multiply( tf.math.sqrt(var), tf.random.normal(mean.shape))
         views_sample = [ ( self.cdgn_decoders_mean[s](z_sample)).numpy() for s in range(self.num_of_views) ]    
         return views_sample 
 
-    def get_latent_space(self,views, w):
+    # Get all latent space [Z,Z1,...,ZM] from all views
+    def get_latents_space(self,views, w):
         all_latent_space = [self.average_encoders(views, w, views_id = [id])[0].numpy() for id in range(self.num_of_views)]
         all_latent_space.insert(0, self.average_encoders(views, w)[0].numpy())
         return all_latent_space
+
+    # Get common latent space Z from a subset of views (the same for all instances)     
+    def get_common_latent_space_from_someviews(self,views,w,views_id):
+        return self.average_encoders(views, w, views_id )[0].numpy()
+
+    # Encode views from a limited numbers of views (can be not the same for all instance) or from all views
+    def average_encoders2(self, views, wtab, views_id_tab ):
+        views_id0 = np.arange(self.num_of_views)
+        if "krylov" in self.encoder_nn_type:
+            packs = [self.cdgn_encoders[s]([ views[s:s+1] , wtab[s:s+1] ]) for s in views_id0]
+        else:
+            packs = [self.cdgns[s](views[s:s+1]) for s in views_id0] 
+        means = [pack[0] for pack in packs]
+        logvars = [pack[1] for pack in packs]
+        vars_ = [tf.math.exp(logvar) for logvar in logvars]
+        inv_vars = [1/var for var in vars_]
+        existing_views = np.transpose([ np.array([int(id_ in tab) for tab in views_id_tab]) for id_ in range(len(views)) ])
+        meanXinv_var  =  [ mean * inv_var for mean, inv_var in zip(means,inv_vars)]
+        mean = 0
+        var = 0
+        for k in range(self.num_of_views):
+            mean += existing_views[:,k:k+1]*meanXinv_var[k] 
+            var += existing_views[:,k:k+1]*inv_vars[k]
+        mean = mean / var
+        var = 1/ var
+        logvar = tf.math.log(var)
+        return mean, var, logvar
+
+    # Get all latent space Z from a subset of views (not the same for all instance) or from all views  
+    def get_common_latent_space_from_someviews2(self,views,wtab,views_id):
+        return self.average_encoders2(views, wtab, views_id )[0].numpy()
