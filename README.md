@@ -114,17 +114,17 @@ This command will evaluate the gridsearch performed on uci7 at April_23_2021_01h
 
 #### UCI Robust Classification with Inference
 ``` 
-python3 run_mvgcca.py --task uci7robustinf --view
+python3 run_mvgcca.py --task uci7robustinf --views_dropout_max 0 (or 5)
 ``` 
 It will print the acccuracy for different level of views removed in test set.
 #### UCI Robust Classification 
 ``` 
-python3 run_mvgcca.py --task uci7robustclassif
+python3 run_mvgcca.py --task uci7robustclassif --views_dropout_max 0 (or 5)
 ```
 It will print the acccuracy for different level of views removed in test set.
 #### UCI Robust Classificationv2
 ``` 
-python3 run_mvgcca.py --task uci7robustclassifv2
+python3 run_mvgcca.py --task uci7robustclassifv2 --views_dropout_max 0 (or 3)
 ``` 
 It will print the acccuracy for different level of views removed in test set.
 #### Twitter Friends Recommendation
