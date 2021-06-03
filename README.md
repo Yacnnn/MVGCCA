@@ -10,6 +10,10 @@
 - scipy
 - matplotlib
 
+## Multiviews Dataset with graph prior
+### Example 
+![multiview_dataset](https://user-images.githubusercontent.com/73817884/120652163-c9c5b480-c47f-11eb-8513-82213542c9e1.png)
+### Multiviews Dataset with missing views
 ## Datasets
 
 All the datasets are decribed in details on article (~ will come)
