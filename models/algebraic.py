@@ -1,5 +1,4 @@
 import numpy as np
-
 ###################### Models GPCA ###################### 
 #GPCA  #PCA if beta = 0 #LC if beta = 1
 def  gpca(X,W,beta,n_components):
