@@ -62,7 +62,7 @@ Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robus
     '--num_of_epochs', type = int, default = 1, help='Number of epochs.'
     '--batch_size', type = int, default = 512, help='Batch size.'
     '--dropout', type = float, default = 0.3, help='Dropout rate applied to every hidden layers.'
-    '--views_dropout_max', type = int, default = 5, help='Integer. Views dropout is disable if null. Otherwise, for each epoch the numbers of views 
+    '--views_dropout_max', type = int, default = 0, help='Integer. Views dropout is disable if null. Otherwise, for each epoch the numbers of views 
      ignored during encoding phase is sample between 1 and MIN(views_dropout_max,nb_of_views - 1)')
     '--latent_dim', type = int, default = 3, help='Dimension of latent space.'
     '--write_loss', type = str2bool, default = False, help='True or False. Decide whether or not to write loss training of model.'
@@ -99,15 +99,45 @@ Svm-rbf Accuracy on UCI7: 0.9707142857142858
 
 #### UCI Clustering and Classification 
 
-*Perform the grid search :*
+*Perform the grid search :* 
+``` 
+python3 run_mvgcca.py --task uci7 --grid_search True 
+```
+It will create a folder (for example) April_23_2021_01h05m53s in folder 'results/uci7/' with all the information about the gridsearch. 
+
+*Evaluate the grid search :*
+``` 
+python3 run_mvgcca_grid_search_evaluation.py --task uci7 '--date' April_23_2021_01h05m53s
+```
+This command will evaluate the gridsearch performed on uci7 at April_23_2021_01h05m53s and print it.
+(SVM-Rbf accuracy, Kmeans adjusted rand index, spectral clustering rand index)
 
 #### UCI Robust Classification with Inference
-
+``` 
+python3 run_mvgcca.py --task uci7robustinf
+``` 
 #### UCI Robust Classification 
-
+``` 
+python3 run_mvgcca.py --task uci7robustclassif
+```
 #### UCI Robust Classificationv2
-
+``` 
+python3 run_mvgcca.py --task uci7robustclassifv2
+``` 
 #### Twitter Friends Recommendation
+
+On previous experiments, the number of run corresponds to the number of times we trained the model for each parameters (in order to compute average performance for each parameters across differents run). For twitter friends recommendation, each run corresponds to a different sampling of the (huge) inital datasets. We simply trained the method for 100 runs (100 differents sampling) and then compute the performance for each of these runs (every 100 epochs). 
+
+*Perform the grid search :* 
+``` python3 run_mvgcca.py --task tfr --latent_dim 5 ----num_of_run 100
+```
+The first time you launch this command, for each run $i$, if the file 'datasets/tfr/twitter$i$.mat" exists we load it. Otherwise we sample 2506 users from database and create the associated weighted graph as specified in the paper. Then we save it in 'datasets/tfr/twitter$i$.mat";
+It will alse create a folder (for exmaple)  April_23_2021_01h05m53s in folder 'results/tfr/' with all the run information.
+
+*Evaluate the grid search :*
+``` python3 run_mvgcca_grid_search_evaluation.py --task tfr '--date' April_23_2021_01h05m53s
+```
+This command will evaluate the differents run on April_23_2021_01h05m53s. It will print the precision, recall and mrr metrics each epochs saved  and this for all run.
 
 #### Mnist2views Classsification
 
