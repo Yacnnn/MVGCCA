@@ -119,17 +119,20 @@ This command will evaluate the gridsearch performed on uci7 at April_23_2021_01h
 ``` 
 python3 run_mvgcca.py --task uci7robustinf --views_dropout_max 0 (or 5)
 ``` 
-It will print the acccuracy for different level of views removed in test set.
+It will print the acccuracy for different levels of views removed in test set.
+We remove between 0 and five 5 views.
 #### UCI Robust Classification 
 ``` 
 python3 run_mvgcca.py --task uci7robustclassif --views_dropout_max 0 (or 5)
 ```
-It will print the acccuracy for different level of views removed in test set.
+It will print the acccuracy for different levels of views removed in test set.
+We remove between 0 and five 5 views.
 #### UCI Robust Classificationv2
 ``` 
 python3 run_mvgcca.py --task uci7robustclassifv2 --views_dropout_max 0 (or 3)
 ``` 
-It will print the acccuracy for different level of views removed in test set.
+It will print the acccuracy for different levels of views removed in test set.
+We remove [1, 5, 10, 15 , 25, 50, 75 ] percent of views.
 #### Twitter Friends Recommendation
 
 In previous experiments, the number of run corresponded to the number of times we trained the model for each parameter (in order to compute average performance for each parameter across the different run). For twitter friends recommendation, it is the same but each run corresponds to a different sampling of the (huge) inital datasets. We trained the method for one set of parameters for 100 runs (i.e 100 different sampling) and then computed the performance for each of these runs (every 100 epochs). 
