@@ -107,7 +107,7 @@ It will create a folder (for example) April_23_2021_01h05m53s in folder "results
 
 *Evaluate the grid search :*
 ``` 
-python3 run_mvgcca_grid_search_evaluation.py --task uci7 '--date' April_23_2021_01h05m53s
+python3 run_mvgcca_grid_search_evaluation.py --task uci7 '--date' April_23_2021_01h05m53s --write_latent_space_interval 100
 ```
 This command will evaluate the gridsearch performed on uci7 at April_23_2021_01h05m53s and print it.
 (SVM-Rbf accuracy, Kmeans adjusted rand index, spectral clustering rand index)
@@ -133,14 +133,14 @@ In previous experiments, the number of run corresponded to the number of times w
 
 *Perform runs :* 
 ``` 
-python3 run_mvgcca.py --task tfr --latent_dim 5 ----num_of_run 100
+python3 run_mvgcca.py --task tfr --latent_dim 5 ----num_of_run 100 --write_latent_space_interval 100
 ```
 When you launch this command, for each run $i$, if the file "datasets/tfr/twitter$i$.mat" exists we load it. Otherwise we sample 2506 users from database and create the associated weighted graph as specified in the paper. Then we save it in "datasets/tfr/twitter$i$.mat".
 However, this command will also create a folder (for example) April_23_2021_01h05m53s in folder "results/tfr/" with all runs information.
 
 *Evaluate runs :*
 ``` 
-python3 run_mvgcca_grid_search_evaluation.py --task tfr '--date' April_23_2021_01h05m53s
+python3 run_mvgcca_grid_search_evaluation.py --task tfr '--date' April_23_2021_01h05m53s --write_latent_space_interval 100
 ```
 This command will evaluate the different run on April_23_2021_01h05m53s. It will print the precision, recall and mrr metrics for each epochs saved and this for all run.
 
