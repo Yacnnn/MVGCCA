@@ -18,7 +18,7 @@
 
 ## Datasets
 
-All the datasets are decribed in details on article (~ will come)
+All datasets are decribed in details on article (~ will come)
 
 - Uci Handwritten digits multiviews datasets, available here : https://archive.ics.uci.edu/ml/datasets/Multiple+Features           
 
@@ -32,7 +32,7 @@ uidPerFriend_fuse_all.txt and uidPerHashtag_fuse_all.txt must be in path dataset
 
 ## Tasks
 
-All the tasks are decribed in details on article (~ will come)
+All tasks are decribed in details on article (~ will come)
 
 Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robustclassif", "uci10robustclassif", "uci10robustclassifv2",'uci7robustclassifv2',"mnist2views","tfr"]
 
