@@ -64,7 +64,6 @@ Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robus
     '--dropout', type = float, default = 0.3, help='Dropout rate applied to every hidden layers.'
     '--views_dropout_max', type = int, default = 5, help='Integer. Views dropout is disable if null. Otherwise, for each epoch the numbers of views 
      ignored during encoding phase is sample between 1 and MIN(views_dropout_max,nb_of_views - 1)')
-
     '--latent_dim', type = int, default = 3, help='Dimension of latent space.'
     '--write_loss', type = str2bool, default = False, help='True or False. Decide whether or not to write loss training of model.'
     '--write_latent_space', type = str2bool, default = False, help='True or False. Decide whether or not to write model weights.'
