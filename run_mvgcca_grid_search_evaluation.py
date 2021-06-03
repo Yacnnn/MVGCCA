@@ -182,6 +182,7 @@ def evalute_classif_cross_validation_mnist2views(embeddings_list,labels,nb_clust
 
     ifinalbest = np.argmax(np.mean(svm_valid_acc_results, axis =  0))
     final_svm_acc = np.mean(svm_test_acc_results, axis =  0)[ifinalbest]
+    print("Svm-rbf Accuracy on Mnist2views: "+str(final_svm_acc))
     return final_svm_acc
 
 if __name__ == '__main__':
