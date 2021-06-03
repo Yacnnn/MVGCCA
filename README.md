@@ -14,7 +14,8 @@
 
 All the datasets are decribed in details on article (~ will come)
 
-- Uci Handwritten digits multiviews datasets, available here : https://archive.ics.uci.edu/ml/datasets/Multiple+Features
+- Uci Handwritten digits multiviews datasets, available here : https://archive.ics.uci.edu/ml/datasets/Multiple+Features           
+
   The file uci7.mat and uci10.mat used in the code is provided on this repository in folder "datasets".
 - Twitter Friend recommendation
 - Mnist2views 
