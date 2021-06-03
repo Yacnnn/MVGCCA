@@ -148,17 +148,18 @@ This command will evaluate the different run on April_23_2021_01h05m53s. It will
 
 A grid search was used to decide latent_dim = 30 or 60. 
 
-*Perform the grid search :* 
+*Perform runs :* 
+
 ``` 
 python3 run_mvgcca.py --task mnist2views --latent_dim 60  --num_of_epochs 200 --write_latent_space_interval 10
 
 ```
-It will create a folder (for example) April_23_2021_01h05m53s in folder 'results/uci7/' with all the information about the gridsearch. 
+It will create a folder (for example) April_23_2021_01h05m53s in folder "results/mnist2views/" with all the information about the gridsearch. 
 
 *Evaluate the grid search :*
 ``` 
 python3 run_mvgcca_grid_search_evaluation.py --task uci7 '--date' April_23_2021_01h05m53s
 ```
-This command will evaluate the gridsearch performed on uci7 at April_23_2021_01h05m53s and print it.
-(SVM-Rbf accuracy, Kmeans adjusted rand index, spectral clustering rand index)
+This command will evaluate the gridsearch performed on mnisst2views at April_23_2021_01h05m53s and print it.
+(SVM-Rbf accuracy)
 
