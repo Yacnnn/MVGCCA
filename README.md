@@ -36,7 +36,7 @@ Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robus
 - uci10robustclassifv2/uci7robustclassifv2 : Same experiment as previous, but this time removed views in test set are not necessary the same for differents instances.
 - mnist2views : Evaluate classification on mnist2views latent space.
 - tfr : Evaluate twitter recommendation task.
-- 
+
 ## Usage 
 
 ### Command
