@@ -139,7 +139,7 @@ However, this command will also create a folder (for example)  April_23_2021_01h
 ``` 
 python3 run_mvgcca_grid_search_evaluation.py --task tfr '--date' April_23_2021_01h05m53s
 ```
-This command will evaluate the differents run on April_23_2021_01h05m53s. It will print the precision, recall and mrr metrics each epochs saved  and this for all run.
+This command will evaluate the different run on April_23_2021_01h05m53s. It will print the precision, recall and mrr metrics each epoch saved and this for all run.
 
 #### Mnist2views Classsification
 
