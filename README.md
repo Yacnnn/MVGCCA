@@ -126,7 +126,7 @@ python3 run_mvgcca.py --task uci7robustclassifv2
 ``` 
 #### Twitter Friends Recommendation
 
-On previous experiments, the number of run corresponds to the number of times we trained the model for each parameters (in order to compute average performance for each parameters across differents run). For twitter friends recommendation, each run corresponds to a different sampling of the (huge) inital datasets. We simply trained the method for 100 runs (100 differents sampling) and then compute the performance for each of these runs (every 100 epochs). 
+In previous experiments, the number of run corresponds to the number of times we trained the model for each parameter (in order to compute average performance for each parameter across the different run). For twitter friends recommendation, each run corresponds to a different sampling of the (huge) inital datasets. We simply trained the method for 100 runs (100 different sampling) and then compute the performance for each of these runs (every 100 epochs). 
 
 *Perform the grid search :* 
 ``` 
