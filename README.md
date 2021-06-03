@@ -39,7 +39,7 @@ Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robus
 
 ## Usage 
 
-### Command
+### Example & Command
 
 `python3 run_mvgcca.py --task uci7 --device -1 --use_graph_decoder true --decoder_scalar_std true --encoder_nn_type krylov-4 --encoder_use_common_hidden_layer true --num_of_layer 4 --hidden_layer 1024--learning_rate 1e-4 --decay_learning_rate true --num_of_epochs 600 --batch_size 512 --dropout 0.5 --latent_dim 3 --write_loss true --write_latent_space true --num_of_run 2 --evaluation true`
 
