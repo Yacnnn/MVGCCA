@@ -103,7 +103,7 @@ Svm-rbf Accuracy on UCI7: 0.9707142857142858
 ``` 
 python3 run_mvgcca.py --task uci7 --grid_search True 
 ```
-It will create a folder (for example) April_23_2021_01h05m53s in folder 'results/uci7/' with all the information about the gridsearch. 
+It will create a folder (for example) April_23_2021_01h05m53s in folder "results/uci7/" with all the information about the gridsearch. 
 
 *Evaluate the grid search :*
 ``` 
