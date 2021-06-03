@@ -26,21 +26,22 @@ All datasets are decribed in details in article (~ will come)
 - __Twitter Friend recommendation__, available here : http://www.cs.jhu.edu/~mdredze/datasets/multiview_embeddings/
 
   Because of the size of the file, it is not provided on this repository. Hence, you have to download user_6views_tfidf_pcaEmbeddings_userTweets+networks.tsv.gz (1.4 GB) file. Extract it. Then concatenate file uidPerFriend_test_all.txt, uidPerFriend_dev_all.txt to uidPerFriend_fuse_all.txt. And concatenate uidPerHashtag_test_all.txt, uidPerHashtag_dev_all.txt to uidPerHashtag_fuse_all.txt.
-uidPerFriend_fuse_all.txt and uidPerHashtag_fuse_all.txt must be in path datasets/twitter/friend_and_hashtag_prediction_userids/.
+  
+*uidPerFriend_fuse_all.txt and uidPerHashtag_fuse_all.txt must be in path "datasets/twitter/friend_and_hashtag_prediction_userids/".*
 - __Mnist2views__ (~ will come)
 
 ## Tasks
 
-All tasks are decribed in details on article (~ will come)
+All tasks are decribed in details in article (~ will come)
 
 Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robustclassif", "uci10robustclassif", "uci10robustclassifv2",'uci7robustclassifv2',"mnist2views","tfr"]
 
 - __uci7/uci10__ : Evaluate clustering and classification on uci7/uci10 latent space.`
 
 
-- __uci7robustinf/uci10robustinf__ : We split the dataset in train and test set. We eventually remove some views in test set (scenario 1). In the train set, we add the label of each instances as the 7th views. We train the model on this train set. Then we infer the labels (the 7th views) of the test sets.
-- __uci7robustclassif/uci10robustclassif__ : We split the dataset in train and test set. We eventually remove some views in test set (scenario 1). Then we train the model on this train set. Finally a classifier trained on train latent space is evaluated on test latent space.
-- __uci10robustclassifv2/uci7robustclassifv2__ : Same experiment as previous, but this time in scenatio 2.
+- __uci7robustinf/uci10robustinf__ : We split the dataset in train and test set. We remove some views in test set (following scenario 1). In the train set, we add the label of each instances as the 7th views. We train the model on this train set. Then we infer the labels (the 7th views) of instance from the test set latent space.
+- __uci7robustclassif/uci10robustclassif__ : We split the dataset in train and test set. We remove some views in test set (scenario 1). Then we train the model on this train set. Finally a classifier trained on train set latent space is evaluated on test set latent space.
+- __uci10robustclassifv2/uci7robustclassifv2__ : Same experiment as previous, but this time following the scenario 2 when removing test set views.
 - __mnist2views__ : Evaluate classification on mnist2views latent space.
 - __tfr__ : Evaluate twitter recommendation task.
 
@@ -128,24 +129,24 @@ python3 run_mvgcca.py --task uci7robustclassifv2 --views_dropout_max 0 (or 3)
 It will print the acccuracy for different level of views removed in test set.
 #### Twitter Friends Recommendation
 
-In previous experiments, the number of run corresponded to the number of times we trained the model for each parameter (in order to compute average performance for each parameter across the different run). For twitter friends recommendation, each run corresponds to a different sampling of the (huge) inital datasets. We simply trained the method for 100 runs (100 different sampling) and then compute the performance for each of these runs (every 100 epochs). 
+In previous experiments, the number of run corresponded to the number of times we trained the model for each parameter (in order to compute average performance for each parameter across the different run). For twitter friends recommendation, it is the same but each run corresponds to a different sampling of the (huge) inital datasets. We trained the method for one set of parameters for 100 runs (i.e 100 different sampling) and then computed the performance for each of these runs (every 100 epochs). 
 
 *Perform runs :* 
 ``` 
 python3 run_mvgcca.py --task tfr --latent_dim 5 ----num_of_run 100
 ```
-The first time you launch this command, for each run $i$, if the file "datasets/tfr/twitter$i$.mat" exists we load it. Otherwise we sample 2506 users from database and create the associated weighted graph as specified in the paper. Then we save it in "datasets/tfr/twitter$i$.mat".
-However, this command will also create a folder (for example)  April_23_2021_01h05m53s in folder 'results/tfr/' with all the run information.
+When you launch this command, for each run $i$, if the file "datasets/tfr/twitter$i$.mat" exists we load it. Otherwise we sample 2506 users from database and create the associated weighted graph as specified in the paper. Then we save it in "datasets/tfr/twitter$i$.mat".
+However, this command will also create a folder (for example) April_23_2021_01h05m53s in folder "results/tfr/" with all runs information.
 
 *Evaluate runs :*
 ``` 
 python3 run_mvgcca_grid_search_evaluation.py --task tfr '--date' April_23_2021_01h05m53s
 ```
-This command will evaluate the different run on April_23_2021_01h05m53s. It will print the precision, recall and mrr metrics each epoch saved and this for all run.
+This command will evaluate the different run on April_23_2021_01h05m53s. It will print the precision, recall and mrr metrics for each epochs saved and this for all run.
 
 #### Mnist2views Classsification
 
-A grid search was used to decide latent_dim = 30 or 60. 
+A grid search was used to decide latent_dim = 60. (30 vs 60)
 
 *Perform runs :* 
 
@@ -155,10 +156,10 @@ python3 run_mvgcca.py --task mnist2views --latent_dim 60  --num_of_epochs 200 --
 ```
 It will create a folder (for example) April_23_2021_01h05m53s in folder "results/mnist2views/" with all the information about the gridsearch. 
 
-*Evaluate the grid search :*
+*Evaluate runs :*
 ``` 
 python3 run_mvgcca_grid_search_evaluation.py --task uci7 '--date' April_23_2021_01h05m53s
 ```
-This command will evaluate the gridsearch performed on mnisst2views at April_23_2021_01h05m53s and print it.
+This command will evaluate the gridsearch performed on mnist2views at April_23_2021_01h05m53s and print it.
 (SVM-Rbf accuracy)
 
