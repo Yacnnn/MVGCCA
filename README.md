@@ -129,13 +129,15 @@ python3 run_mvgcca.py --task uci7robustclassifv2
 On previous experiments, the number of run corresponds to the number of times we trained the model for each parameters (in order to compute average performance for each parameters across differents run). For twitter friends recommendation, each run corresponds to a different sampling of the (huge) inital datasets. We simply trained the method for 100 runs (100 differents sampling) and then compute the performance for each of these runs (every 100 epochs). 
 
 *Perform the grid search :* 
-``` python3 run_mvgcca.py --task tfr --latent_dim 5 ----num_of_run 100
+``` 
+python3 run_mvgcca.py --task tfr --latent_dim 5 ----num_of_run 100
 ```
 The first time you launch this command, for each run $i$, if the file 'datasets/tfr/twitter$i$.mat" exists we load it. Otherwise we sample 2506 users from database and create the associated weighted graph as specified in the paper. Then we save it in 'datasets/tfr/twitter$i$.mat";
 It will alse create a folder (for exmaple)  April_23_2021_01h05m53s in folder 'results/tfr/' with all the run information.
 
 *Evaluate the grid search :*
-``` python3 run_mvgcca_grid_search_evaluation.py --task tfr '--date' April_23_2021_01h05m53s
+``` 
+python3 run_mvgcca_grid_search_evaluation.py --task tfr '--date' April_23_2021_01h05m53s
 ```
 This command will evaluate the differents run on April_23_2021_01h05m53s. It will print the precision, recall and mrr metrics each epochs saved  and this for all run.
 
