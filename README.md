@@ -22,13 +22,13 @@ All datasets are decribed in the article (~ will come)
 
 - __UCI Handwritten digits__ multiviews dataset, available here : https://archive.ics.uci.edu/ml/datasets/Multiple+Features           
 
-  The file uci7.mat and uci10.mat used in the code is provided on this repository in folder "datasets/uci/".
+  The file uci7.mat and uci10.mat used in the code is provided in this repository in folder "datasets/uci/".
 - __Twitter Friend recommendation__, available here : http://www.cs.jhu.edu/~mdredze/datasets/multiview_embeddings/
 
   Because of the size of the file, it is not provided on this repository. Hence, you have to download user_6views_tfidf_pcaEmbeddings_userTweets+networks.tsv.gz (1.4 GB) file. Extract it. Then concatenate file uidPerFriend_test_all.txt, uidPerFriend_dev_all.txt to uidPerFriend_fuse_all.txt. And concatenate uidPerHashtag_test_all.txt, uidPerHashtag_dev_all.txt to uidPerHashtag_fuse_all.txt.
   
 *uidPerFriend_fuse_all.txt and uidPerHashtag_fuse_all.txt must be in path "datasets/twitter/friend_and_hashtag_prediction_userids/".*
-- __Mnist2views__ (~ will come)
+- __Mnist2views__ multiviews dataset based on Mnist. 
 
 ## Tasks
 
