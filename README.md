@@ -96,4 +96,8 @@ Svm-rbf Accuracy on UCI7: 0.9707142857142858
 ```
 
 ### Reproduce article (to come) experiments
- 
+
+#### UCI Clustering and Classification 
+
+__Perform the grid search :__
+
