@@ -237,7 +237,7 @@ if __name__ == '__main__':
     parser.add_argument('--device', default='0', help='Index of the target GPU. Specify \'-1\' to disable gpu support.')
     parser.add_argument('--use_graph_decoder', type = str2bool, default= True, help='True or False. Decide whether or not to use graph reconstruction term in loss.')
     parser.add_argument('--decoder_scalar_std', type = str2bool, default = True, help='True or False. Decide whether or not to use scalar matrix as covariance matrix for gaussian decoder.')
-    parser.add_argument('--encoder_nn_type', default='krylov-4', help='Encoders neural networks. Only Krylov-(Deep) is available. Example : krylov-4. ')
+    parser.add_argument('--encoder_nn_type', default='krylov-4', help='Encoders neural networks. Only Mlp and Krylov-(Deep) is available. Example : krylov-4. ')
     parser.add_argument('--encoder_use_common_hidden_layer', type = str2bool, default = True, help='True or False. Whether or not to use differents hidden layers to calculate the mean and variance of encoders')
     parser.add_argument('--num_of_layer', type = int, default= 4, help='Number of layer for encoders AND decoders.')
     parser.add_argument('--hidden_layer', type = int, default= 1024, help='Size of hidden layer for encoders AND decoders.')
@@ -254,7 +254,7 @@ if __name__ == '__main__':
     parser.add_argument('--write_latent_space_interval', type = int, default = 100, help='If --write_latent_space True : epochs interval between two saves of latent space. The last epoch is always saved.')
     parser.add_argument('--grid_search', type = str2bool, default = False, help='True or False. Decide whether or not to process a grid search.')
     parser.add_argument('--num_of_run', type = int, default = 1, help='Number of times the algorithm is runned for each set of parameters.')
-    parser.add_argument('--evaluation', type = str2bool, default = True, help='True or False. Decide whether or not to evaluate latent space (evalutation works only for uci dataset related task and depends on the task selected). If option --num_of_run > 1 average evaluation of these run or evaluation of the last run is returned depending on the task.')
+    parser.add_argument('--evaluation', type = str2bool, default = True, help='True or False. Decide whether or not to evaluate latent space (evalutation works only for uci dataset related task and depends on the task selected). If option --num_of_run > 1, average evaluation of these run is returned for task =[uci7,uci10] ; while each run evaluation is returned for task=[uci7robustinf, uci10robustinf, uci7robustclassif, uci10robustclassif, uci10robustclassifv2,uci7robustclassifv2].')
     args = parser.parse_args()
     device = '/cpu:0' if args.device == '-1' or args.device == '' else '/gpu:'+args.device
     parameters = {}
