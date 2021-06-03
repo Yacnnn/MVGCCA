@@ -18,9 +18,9 @@
 
 ## Datasets
 
-All datasets are decribed in details in article (~ will come)
+All datasets are decribed in details in the article (~ will come)
 
-- __UCI Handwritten digits__ multiviews datasets, available here : https://archive.ics.uci.edu/ml/datasets/Multiple+Features           
+- __UCI Handwritten digits__ multiviews dataset, available here : https://archive.ics.uci.edu/ml/datasets/Multiple+Features           
 
   The file uci7.mat and uci10.mat used in the code is provided on this repository in folder "datasets/uci/".
 - __Twitter Friend recommendation__, available here : http://www.cs.jhu.edu/~mdredze/datasets/multiview_embeddings/
