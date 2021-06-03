@@ -22,7 +22,7 @@ All the datasets are decribed in details on article (~ will come)
   Because of the size of the file, it is not provided on this repository. Hence, you have to download user_6views_tfidf_pcaEmbeddings_userTweets+networks.tsv.gz (1.4 GB) file. Extract it. Then concatenate file uidPerFriend_test_all.txt, uidPerFriend_dev_all.txt to uidPerFriend_fuse_all.txt. And concatenate uidPerHashtag_test_all.txt, uidPerHashtag_dev_all.txt to uidPerHashtag_fuse_all.txt.
 
 uidPerFriend_fuse_all.txt and uidPerHashtag_fuse_all.txt must be in path datasets/twitter/friend_and_hashtag_prediction_userids/.
-- Mnist2views 
+- Mnist2views (~ will come)
 
 ## Tasks
 
