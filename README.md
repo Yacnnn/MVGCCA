@@ -135,20 +135,20 @@ It will print the acccuracy for different levels of views removed in test set.
 We remove [1, 5, 10, 15 , 25, 50, 75 ] percent of views.
 #### Twitter Friends Recommendation
 
-In previous experiments, the number of run corresponded to the number of times we trained the model for each parameter (in order to compute average performance for each parameter across the different run). For twitter friends recommendation, it is the same but each run corresponds to a different sampling of the (huge) inital datasets. We trained the method for one set of parameters for 100 runs (i.e 100 differents sampling) and then computed the performance for each of these runs (every 100 epochs). 
+In previous experiments, the number of run corresponded to the number of times we trained the model for each parameter (in order to compute average performance for each parameter across the different run). For twitter friends recommendation, it is the same but each run corresponds to a different sampling of the (huge) inital datasets. We trained the method for one set of parameters for 100 runs (i.e 100 different sampling) and then computed the performance for each of these runs (every 100 epochs). 
 
 *Perform runs :* 
 ``` 
 python3 run_mvgcca.py --task tfr --latent_dim 5 --num_of_run 100 --write_latent_space_interval 100
 ```
-When we launch this command, for each run $i$, if the file "datasets/tfr/twitter$i$.mat" exists, this file is loaded. Otherwise 2506 users are sampled from database and the associated weighted graph is created as specified in the paper. Then these data are saved "datasets/tfr/twitter$i$.mat".
+When we launch this command, for each run $i$, if the file "datasets/tfr/twitter$i$.mat" exists, this file is loaded. Otherwise 2506 users are sampled from database and the associated weighted graph is created as specified in the paper. Then these data are saved as "datasets/tfr/twitter$i$.mat".
 However, this command will also create a folder (for example) April_23_2021_01h05m53s in folder "results/tfr/" with all runs information.
 
 *Evaluate runs :*
 ``` 
 python3 run_mvgcca_grid_search_evaluation.py --task tfr --date April_23_2021_01h05m53s --write_latent_space_interval 100
 ```
-This command will evaluate the different run on April_23_2021_01h05m53s. It will print the precision, recall and mrr metrics for each epochs saved and this for all run.
+This command will evaluate the different runs on April_23_2021_01h05m53s. It will print the precision, recall and mrr metrics for each epochs saved and this for all runs.
 
 #### Mnist2views Classsification
 
@@ -160,7 +160,7 @@ A grid search was used to decide latent_dim = 60. (30 vs 60)
 python3 run_mvgcca.py --task mnist2views --latent_dim 60  --num_of_epochs 200 --write_latent_space_interval 10
 
 ```
-It will create a folder (for example) April_23_2021_01h05m53s in folder "results/mnist2views/" with all the information about the gridsearch. 
+It will create a folder (for example) April_23_2021_01h05m53s in folder "results/mnist2views/" with all the information about the grid search. 
 
 *Evaluate runs :*
 ``` 
