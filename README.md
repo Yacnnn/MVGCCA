@@ -35,7 +35,7 @@ NB : A short sample of this dataset is provided in "datasets/mnist2views/mnist2v
 
 ## Tasks
 
-All tasks are described in article (~ will come)
+All tasks are described in article (~ link will come)
 
 Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robustclassif", "uci10robustclassif", "uci10robustclassifv2",'uci7robustclassifv2',"mnist2views","tfr"]
 
