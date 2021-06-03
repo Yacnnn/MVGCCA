@@ -18,7 +18,7 @@
 
 ## Datasets
 
-All datasets are decribed in details in the article (~ will come)
+All datasets are decribed more precisely in the article (~ will come)
 
 - __UCI Handwritten digits__ multiviews dataset, available here : https://archive.ics.uci.edu/ml/datasets/Multiple+Features           
 
