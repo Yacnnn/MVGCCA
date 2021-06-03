@@ -36,7 +36,7 @@ All tasks are decribed in details in article (~ will come)
 
 Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robustclassif", "uci10robustclassif", "uci10robustclassifv2",'uci7robustclassifv2',"mnist2views","tfr"]
 
-- __uci7/uci10__ : Evaluate clustering and classification on uci7/uci10 latent space.`
+- __uci7/uci10__ : Evaluate clustering and classification on uci7/uci10 latent space.
 
 
 - __uci7robustinf/uci10robustinf__ : We split the dataset in train and test set. We remove some views in test set (following scenario 1). In the train set, we add the label of each instances as the 7th views. We train the model on this train set. Then we infer the labels (the 7th views) of instance from the test set latent space.
