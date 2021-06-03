@@ -22,8 +22,8 @@ All datasets are described in the article (~ will come)
 
 - __UCI Handwritten digits__ multiviews dataset, available here : https://archive.ics.uci.edu/ml/datasets/Multiple+Features           
 
-  The file uci7.mat and uci10.mat used in the code is provided in this repository in folder "datasets/uci/".
-- __Twitter Friend recommendation__, available here : http://www.cs.jhu.edu/~mdredze/datasets/multiview_embeddings/
+  The files uci7.mat and uci10.mat used in the code are provided in this repository in folder "datasets/uci/".
+- __Twitter Friend Recommendation__, available here : http://www.cs.jhu.edu/~mdredze/datasets/multiview_embeddings/
 
   Because of the size of the file, it is not provided on this repository. Hence, you have to download user_6views_tfidf_pcaEmbeddings_userTweets+networks.tsv.gz (1.4 GB) file. Extract it. Then concatenate file uidPerFriend_test_all.txt, uidPerFriend_dev_all.txt to uidPerFriend_fuse_all.txt. And concatenate uidPerHashtag_test_all.txt, uidPerHashtag_dev_all.txt to uidPerHashtag_fuse_all.txt.
   
@@ -44,7 +44,7 @@ Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robus
 
 - __uci7robustinf/uci10robustinf__ : We split the dataset in train and test set. We remove some views in test set (following scenario 1). In the train set, we add the label of each instances as the 7th views. We train the model on this train set. Then we infer the labels (the 7th views) of test set instances.
 - __uci7robustclassif/uci10robustclassif__ : We split the dataset in train and test set. We remove some views in test set (following scenario 1). Then we train the model on this train set. Finally a classifier trained on train set latent space is evaluated on test set latent space.
-- __uci10robustclassifv2/uci7robustclassifv2__ : Same experiment as previous, but this time we follow scenario 2 when we remove test set views.
+- __uci10robustclassifv2/uci7robustclassifv2__ : Same experiment as previous, but this time we follow scenario 2 when we remove some test set views.
 - __mnist2views__ : Evaluate classification on mnist2views latent space.
 - __tfr__ : Evaluate twitter recommendation task.
 
@@ -85,7 +85,7 @@ Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robus
 
 `python3 run_mvgcca.py --task uci7 --device -1 --use_graph_decoder true --decoder_scalar_std true --encoder_nn_type krylov-4 --encoder_use_common_hidden_layer true --num_of_layer 4 --hidden_layer 1024--learning_rate 1e-4 --decay_learning_rate true --num_of_epochs 600 --batch_size 512 --dropout 0.5 --latent_dim 3 --write_loss true --write_latent_space true --num_of_run 2 --evaluation true`
 
-This command will train the models two times and evalute the quality of latent space on uci7 task. it will create a results folder where loss value during training, latent space and clustering accuracy for all run will be saved The average results of these runs will be print at the end of computation and a 2 dimensional tsne-projection of latent space of the last run will be display.
+This command will train the models two times and evalute the quality of latent space on uci7 task. It will create "results" folder where loss value during training, latent space and clustering accuracy for all run will be saved. The average results of these runs will be printed at the end of computation and a 2 dimensional tsne-projection of latent space of the last run will be displayed.
 
   
 #### Output
