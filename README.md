@@ -146,7 +146,7 @@ However, this command will also create a folder (for example) April_23_2021_01h0
 
 *Evaluate runs :*
 ``` 
-python3 run_mvgcca_grid_search_evaluation.py --task tfr '--date' April_23_2021_01h05m53s --write_latent_space_interval 100
+python3 run_mvgcca_grid_search_evaluation.py --task tfr --date April_23_2021_01h05m53s --write_latent_space_interval 100
 ```
 This command will evaluate the different run on April_23_2021_01h05m53s. It will print the precision, recall and mrr metrics for each epochs saved and this for all run.
 
