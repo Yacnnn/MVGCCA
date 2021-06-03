@@ -18,7 +18,7 @@
 
 ## Datasets
 
-All datasets are decribed more precisely in the article (~ will come)
+All datasets are decribed in the article (~ will come)
 
 - __UCI Handwritten digits__ multiviews dataset, available here : https://archive.ics.uci.edu/ml/datasets/Multiple+Features           
 
@@ -32,7 +32,7 @@ All datasets are decribed more precisely in the article (~ will come)
 
 ## Tasks
 
-All tasks are decribed in details in article (~ will come)
+All tasks are decribed in article (~ will come)
 
 Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robustclassif", "uci10robustclassif", "uci10robustclassifv2",'uci7robustclassifv2',"mnist2views","tfr"]
 
