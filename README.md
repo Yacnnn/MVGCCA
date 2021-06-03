@@ -39,8 +39,8 @@ Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robus
 - uci7/uci10 : Evaluate clustering and classification on uci7/uci10 latent space.`
 
 
-- uci7robustinf/uci10robustinf : We split the dataset in train and test set. We eventually remove some views is test set (scenario 1). In the train set, we add the label of each instances as the 7th views. We train the model on this train set. Then we infer the labels (the 7th views) of the test sets.
-- uci7robustclassif/uci10robustclassif : We split the dataset in train and test set. We eventually remove some views is test set (scenario 1). Then we train the model on this train set. Finally a classifier on train latent space and evaluate it on test latent space.
+- uci7robustinf/uci10robustinf : We split the dataset in train and test set. We eventually remove some views in test set (scenario 1). In the train set, we add the label of each instances as the 7th views. We train the model on this train set. Then we infer the labels (the 7th views) of the test sets.
+- uci7robustclassif/uci10robustclassif : We split the dataset in train and test set. We eventually remove some views in test set (scenario 1). Then we train the model on this train set. Finally a classifier trained on train latent space is evaluated on test latent space.
 - uci10robustclassifv2/uci7robustclassifv2 : Same experiment as previous, but this time in scenatio 2.
 - mnist2views : Evaluate classification on mnist2views latent space.
 - tfr : Evaluate twitter recommendation task.
