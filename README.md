@@ -101,7 +101,7 @@ Svm-rbf Accuracy on UCI7: 0.9707142857142858
 
 *Perform the grid search :*
 
-#### UCI Robust Classification with Inference (+ Visualisation)
+#### UCI Robust Classification with Inference
 
 #### UCI Robust Classification 
 
