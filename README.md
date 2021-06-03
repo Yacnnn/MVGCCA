@@ -66,11 +66,11 @@ Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robus
      ignored during encoding phase is sample between 1 and MIN(views_dropout_max,nb_of_views - 1)')
     '--latent_dim', type = int, default = 3, help='Dimension of latent space.'
     '--write_loss', type = str2bool, default = False, help='True or False. Decide whether or not to write loss training of model.'
-    '--write_latent_space', type = str2bool, default = False, help='True or False. Decide whether or not to write model weights.'
+    '--write_latent_space', type = str2bool, default = True, help='True or False. Decide whether or not to write latent space.'
     '--write_latent_space_interval', type = int, default = 100, help='If --write_latent_space True : epochs interval between two saves of latent space.
      The last epoch is always saved.'
     '--grid_search', type = str2bool, default = False, help='True or False. Decide whether or not to process a grid search.'
-    '--num_of_run', type = int, default = 1, help='Number of times the algorithm is runned.'
+    '--num_of_run', type = int, default = 3, help='Number of times the algorithm is runned.'
     '--evaluation', type = str2bool, default = True, help='True or False. Decide whether or not to evaluate latent space (evalutation works only for uci 
     dataset related task and depends on the task selected). If option --num_of_run > 1, average evaluation of these run is returned for task =[uci7,uci10] ;
     while each run evaluation is returned for task=[uci7robustinf, uci10robustinf, uci7robustclassif, uci10robustclassif,  
@@ -131,14 +131,14 @@ It will print the acccuracy for different level of views removed in test set.
 
 In previous experiments, the number of run corresponded to the number of times we trained the model for each parameter (in order to compute average performance for each parameter across the different run). For twitter friends recommendation, each run corresponds to a different sampling of the (huge) inital datasets. We simply trained the method for 100 runs (100 different sampling) and then compute the performance for each of these runs (every 100 epochs). 
 
-*Perform the grid search :* 
+*Perform runs :* 
 ``` 
 python3 run_mvgcca.py --task tfr --latent_dim 5 ----num_of_run 100
 ```
 The first time you launch this command, for each run $i$, if the file "datasets/tfr/twitter$i$.mat" exists we load it. Otherwise we sample 2506 users from database and create the associated weighted graph as specified in the paper. Then we save it in "datasets/tfr/twitter$i$.mat".
 However, this command will also create a folder (for example)  April_23_2021_01h05m53s in folder 'results/tfr/' with all the run information.
 
-*Evaluate the grid search :*
+*Evaluate runs :*
 ``` 
 python3 run_mvgcca_grid_search_evaluation.py --task tfr '--date' April_23_2021_01h05m53s
 ```
@@ -146,4 +146,19 @@ This command will evaluate the different run on April_23_2021_01h05m53s. It will
 
 #### Mnist2views Classsification
 
+A grid search was used to decide latent_dim = 30 or 60. 
+
+*Perform the grid search :* 
+``` 
+python3 run_mvgcca.py --task mnist2views --latent_dim 60  --num_of_epochs 200 --write_latent_space_interval 10
+
+```
+It will create a folder (for example) April_23_2021_01h05m53s in folder 'results/uci7/' with all the information about the gridsearch. 
+
+*Evaluate the grid search :*
+``` 
+python3 run_mvgcca_grid_search_evaluation.py --task uci7 '--date' April_23_2021_01h05m53s
+```
+This command will evaluate the gridsearch performed on uci7 at April_23_2021_01h05m53s and print it.
+(SVM-Rbf accuracy, Kmeans adjusted rand index, spectral clustering rand index)
 
