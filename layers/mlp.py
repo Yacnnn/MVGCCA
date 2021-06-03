@@ -33,5 +33,3 @@ class Mlp(tf.keras.Model):
                 output = drop(layer(output))
         output = self.layers_[-1](output)
         return output
-               
-     
