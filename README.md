@@ -29,7 +29,8 @@ All datasets are decribed in the article (~ will come)
   
 *uidPerFriend_fuse_all.txt and uidPerHashtag_fuse_all.txt must be in path "datasets/twitter/friend_and_hashtag_prediction_userids/".*
 - __Mnist2views__ multiviews dataset based on Mnist, available here : https://drive.google.com/drive/folders/1WCfjQRQ79B68YvZG-wQNAIHj0Fxzqw0j?usp=sharing
-A short sample of this dataset is provided in "datasets/mnist2views/mnist2views_example.mat" to help you to build your own, if the upper link is death.
+The downloaded file "mnist2views_example.mat" must be in folder "datasets/mnist2views/".
+NB : A short sample of this dataset is provided in "datasets/mnist2views/mnist2views_example.mat" to help you to build your own, if the upper link is death.
 
 ## Tasks
 
