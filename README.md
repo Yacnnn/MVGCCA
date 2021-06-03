@@ -110,7 +110,7 @@ It will create a folder (for example) April_23_2021_01h05m53s in folder "results
 python3 run_mvgcca_grid_search_evaluation.py --task uci7 '--date' April_23_2021_01h05m53s --write_latent_space_interval 100
 ```
 This command will evaluate the gridsearch performed on uci7 at April_23_2021_01h05m53s and print it.
-(SVM-Rbf accuracy, Kmeans adjusted rand index, spectral clustering rand index)
+(SVM-rbf accuracy, Kmeans adjusted rand index, spectral clustering rand index)
 
 #### UCI Robust Classification with Inference
 ``` 
