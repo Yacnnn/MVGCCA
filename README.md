@@ -26,10 +26,17 @@ uidPerFriend_fuse_all.txt and uidPerHashtag_fuse_all.txt must be in path dataset
 
 ## Tasks
 
-Task available : ['uci7', 'uci10']
+All the tasks are decribed in details on article (~ will come)
 
-Others tasks will be soonly available.
+Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robustclassif", "uci10robustclassif", "uci10robustclassifv2",'uci7robustclassifv2',"mnist2views","tfr"]
 
+- uci7/uci10 : Evaluate clustering and classification on uci7/uci10 latent space.
+- uci7robustinf/uci10robustinf : We split the dataset in train and test set. We eventually remove some views is test set (same views removed for all instances). In the train set, we add the label of each instances as the 7th views. We train the model on this train set. We eventually remove some views is test set. Then we infer the labels (the 7th views) of the test sets.
+- uci7robustclassif/uci10robustclassif : We split the dataset in train and test set. We train the model on this train set. We then train a classifier on train latent space and evaluate it on test latent space.
+- uci10robustclassifv2/uci7robustclassifv2 : same experiment as previous, but this time removed views in test set can be different for the different instance.
+- mnist2views : Evaluate classification on mnist2views latent space.
+- tfr : Evaluate twitter recommendation task
+- 
 ## Usage 
 
 ### Command
