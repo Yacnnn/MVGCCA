@@ -54,15 +54,18 @@ Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robus
     '--num_of_epochs', type = int, default = 1, help='Number of epochs.'
     '--batch_size', type = int, default = 512, help='Batch size.'
     '--dropout', type = float, default = 0.3, help='Dropout rate applied to every hidden layers.'
-    '--views_dropout_max', type = int, default = 5, help='Integer. Views dropout is disable if null. Otherwise, for each epoch the numbers of views ignored        during encoding phase is sample between 1 and MIN(views_dropout_max,nb_of_views - 1)')
+    '--views_dropout_max', type = int, default = 5, help='Integer. Views dropout is disable if null. Otherwise, for each epoch the numbers of views 
+     ignored during encoding phase is sample between 1 and MIN(views_dropout_max,nb_of_views - 1)')
 
     '--latent_dim', type = int, default = 3, help='Dimension of latent space.'
     '--write_loss', type = str2bool, default = False, help='True or False. Decide whether or not to write loss training of model.'
     '--write_latent_space', type = str2bool, default = False, help='True or False. Decide whether or not to write model weights.'
-    '--write_latent_space_interval', type = int, default = 100, help='If --write_latent_space True : epochs interval between two saves of latent space. The last epoch is always saved.'
+    '--write_latent_space_interval', type = int, default = 100, help='If --write_latent_space True : epochs interval between two saves of latent space. The last            epoch is always saved.'
     '--grid_search', type = str2bool, default = False, help='True or False. Decide whether or not to process a grid search.'
     '--num_of_run', type = int, default = 1, help='Number of times the algorithm is runned.'
-    --evaluation', type = str2bool, default = True, help='True or False. Decide whether or not to evaluate latent space (evalutation works only for uci dataset related task and depends on the task selected). If option --num_of_run > 1, average evaluation of these run is returned for task =[uci7,uci10] ; while each run evaluation is returned for task=[uci7robustinf, uci10robustinf, uci7robustclassif, uci10robustclassif, uci10robustclassifv2,uci7robustclassifv2].'
+    --evaluation', type = str2bool, default = True, help='True or False. Decide whether or not to evaluate latent space (evalutation works only for uci 
+    dataset related task and depends on the task selected). If option --num_of_run > 1, average evaluation of these run is returned for task =[uci7,uci10] ;
+    while each run evaluation is returned for task=[uci7robustinf, uci10robustinf, uci7robustclassif, uci10robustclassif,  uci10robustclassifv2,uci7robustclassifv2].'
     
 ### Example
 
