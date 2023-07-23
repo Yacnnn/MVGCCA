@@ -78,7 +78,11 @@ Task available : ["uci7", "uci10", "uci7robustinf", "uci10robustinf", "uci7robus
     dataset related task and depend on the task selected). If option --num_of_run > 1, average evaluation of these run is returned for task =[uci7,uci10] ;
     while each run evaluation is returned for task=[uci7robustinf, uci10robustinf, uci7robustclassif, uci10robustclassif,  
     uci10robustclassifv2,uci7robustclassifv2].'
-    
+
+#### Note: 
+
+When the views dropout is used the following messagee may/will appear:  WARNING:tensorflow:Gradients do not exist for variables
+
 ### Example
 
 #### Input
