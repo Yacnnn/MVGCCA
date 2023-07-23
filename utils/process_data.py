@@ -9,7 +9,7 @@ from scipy.spatial.distance import cdist
 from scipy import sparse
 import h5py
 import matplotlib.pyplot as plt
-ROOTDIR  = "~/"
+ROOTDIR  = "./"
 #-------------------------- General --------------------------
 def available_tasks():
     """ Return list of available tasks. """
