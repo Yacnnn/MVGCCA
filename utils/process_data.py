@@ -108,12 +108,7 @@ def preprocess_data(data):
 
 def create_save_rootfolder(task, NOW):
     """ Create root folder results/task for save informations about MVGCCA training. """
-    if not os.path.isdir(ROOTDIR+'results'):
-        os.system('mkdir '+ROOTDIR+'results')
-    if not os.path.isdir(ROOTDIR+'results/'+task):
-        os.system('mkdir '+ROOTDIR+'results/'+task)
-    if not os.path.isdir(ROOTDIR+'results/'+task+'/'+NOW):
-        os.system('mkdir '+ROOTDIR+'results/'+task+'/'+NOW) 
+    os.makedirs(ROOTDIR+'results/'+task+'/'+NOW, exist_ok=True)
    
 def update_path(parameters, task, NOW, parameters_id, run_id):
     """ Change the path where we save information about current run. """
